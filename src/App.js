@@ -3,7 +3,7 @@ import './App.css'; // For additional styling if needed
 
 const GeometricArtGenerator = () => {
   const canvasRef = useRef(null);
-  const [duration, setDuration] = useState(60); // Default 1 minute
+  const [duration, setDuration] = useState(60);
   const [isRunning, setIsRunning] = useState(false);
   const [fillShapes, setFillShapes] = useState(true);
   const [backgroundColor, setBackgroundColor] = useState('#ffffff');
@@ -60,7 +60,7 @@ const GeometricArtGenerator = () => {
 
     const minRadius = Math.min(width, height) / 20;
     const maxRadius = Math.min(width, height) / 10;
-    const shapeInterval = 100; // Set a fixed interval for shape generation (e.g., 100 ms)
+    const shapeInterval = 50; 
 
     const generateInterval = setInterval(() => {
       const elapsed = Date.now() - startTime;
