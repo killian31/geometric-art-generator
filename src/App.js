@@ -36,7 +36,7 @@ const GeometricArtGenerator = () => {
     }
     ctx.closePath();
 
-    ctx.fillStyle = `hsla(${Math.random() * 360}, ${Math.random() * 100}%, ${Math.random() * 50}%, 0.8)`;
+    ctx.fillStyle = `hsla(${Math.random() * 360}, ${Math.random() * 100}%, ${Math.random() * 50}%, 0.9)`;
     ctx.fill();
   };
 
