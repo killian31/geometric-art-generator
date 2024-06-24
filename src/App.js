@@ -10,8 +10,6 @@ const GeometricArtGenerator = () => {
   const [intervalId, setIntervalId] = useState(null);
   const [remainingTime, setRemainingTime] = useState(duration * 60 * 1000);
   const [startTime, setStartTime] = useState(null);
-  const [showPrompt, setShowPrompt] = useState(false);
-  const [endTime, setEndTime] = useState(null);
 
   useEffect(() => {
     if (!isRunning && intervalId) {
@@ -49,7 +47,6 @@ const GeometricArtGenerator = () => {
     }
 
     setIsRunning(true);
-    setShowPrompt(false);
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const width = canvas.width;
@@ -59,7 +56,6 @@ const GeometricArtGenerator = () => {
       ctx.fillStyle = backgroundColor;
       ctx.fillRect(0, 0, width, height);
       setStartTime(Date.now());
-      setEndTime(Date.now() + duration * 60 * 1000);
     }
 
     const minRadius = Math.min(width, height) / 20;
@@ -68,13 +64,12 @@ const GeometricArtGenerator = () => {
 
     const generateInterval = setInterval(() => {
       const elapsed = Date.now() - startTime;
-      setRemainingTime(endTime - Date.now());
+      setRemainingTime(duration * 60 * 1000 - elapsed);
 
-      if (Date.now() >= endTime) {
+      if (elapsed >= duration * 60 * 1000) {
         clearInterval(generateInterval);
         setIsRunning(false);
         setRemainingTime(0);
-        setShowPrompt(true);
         return;
       }
 
@@ -92,7 +87,6 @@ const GeometricArtGenerator = () => {
   const restartGeneration = () => {
     setIsRunning(false);
     setStartTime(null);
-    setEndTime(null);
     clearCanvas();
     setRemainingTime(duration * 60 * 1000);
     startGeneration();
@@ -168,6 +162,12 @@ const GeometricArtGenerator = () => {
         >
           Restart
         </button>
+        <button
+          onClick={saveArt}
+          className="bg-green-500 text-white px-6 py-2 rounded"
+        >
+          Download Artwork
+        </button>
       </div>
       <div className="mb-4 text-lg font-semibold">
         Remaining Time: {formatTime(remainingTime)}
@@ -178,38 +178,6 @@ const GeometricArtGenerator = () => {
         height={600}
         className="border mt-4 w-full bg-white"
       />
-      {showPrompt && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
-          <div className="bg-white p-6 rounded shadow-lg text-center">
-            <h2 className="text-2xl mb-4">Download Your Artwork</h2>
-            <canvas
-              ref={(el) => {
-                if (el) {
-                  const ctx = el.getContext('2d');
-                  const mainCanvas = canvasRef.current;
-                  el.width = mainCanvas.width / 2;
-                  el.height = mainCanvas.height / 2;
-                  ctx.drawImage(mainCanvas, 0, 0, el.width, el.height);
-                }
-              }}
-            />
-            <div className="mt-4">
-              <button
-                onClick={saveArt}
-                className="bg-green-500 text-white px-6 py-2 rounded mr-4"
-              >
-                Download
-              </button>
-              <button
-                onClick={restartGeneration}
-                className="bg-yellow-500 text-white px-6 py-2 rounded"
-              >
-                Restart
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
