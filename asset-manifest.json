@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/geometric-art-generator/static/css/main.fec0f6f0.css",
+    "main.js": "/geometric-art-generator/static/js/main.cfbbbc21.js",
+    "static/js/453.391fab18.chunk.js": "/geometric-art-generator/static/js/453.391fab18.chunk.js",
+    "index.html": "/geometric-art-generator/index.html",
+    "main.fec0f6f0.css.map": "/geometric-art-generator/static/css/main.fec0f6f0.css.map",
+    "main.cfbbbc21.js.map": "/geometric-art-generator/static/js/main.cfbbbc21.js.map",
+    "453.391fab18.chunk.js.map": "/geometric-art-generator/static/js/453.391fab18.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fec0f6f0.css",
+    "static/js/main.cfbbbc21.js"
+  ]
+}
