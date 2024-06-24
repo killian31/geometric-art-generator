@@ -1,3 +1,48 @@
+/* src/App.css */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.bg-gray-800 {
+  background-color: #2d3748;
+}
+
+.bg-opacity-75 {
+  background-opacity: 0.75;
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.block {
+  display: block;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .App {
   text-align: center;
 }
